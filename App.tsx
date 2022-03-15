@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, Image,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import c3po from "./assets/c3po.jpg"
 const Stack = createNativeStackNavigator();
 
 function Home({ navigation }: any) {
@@ -61,7 +62,7 @@ function Characters({ navigation }) {
 		<View style={styles.container}>
 			{
 				loading ?
-					<Text style={{color:"#FFF"}}>Chargement...</Text>
+					<Text style={{ color: "#FFF" }}>Chargement...</Text>
 					:
 					<>
 						<FlatList
@@ -112,14 +113,63 @@ function Character({ route }) {
 
 	return (
 
-		<View style={styles.container}>
+		<ScrollView style={{ display: "flex", backgroundColor: "#000", flex: 1, padding: 30 }}>
 			{loading ?
 				<Text style={{ color: "#FFF" }}>Chargement...</Text>
 				:
-				<Text style={{ color: "#FFF" }}>{JSON.stringify(character)}</Text>
+				<ScrollView>
+					<Text style={{ color: "yellow", fontSize: 40 }}>{character?.name}</Text>
+					<Image style={{ height: 300, width: 300, alignSelf: 'center' }} source={c3po} />
+					<View style={{ margin: 10, display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+						<View>
+							<Text style={{ color: "#FFF" }}>Taille (cm) : {character?.height}</Text>
+							<Text style={{ color: "#FFF" }}>Poids (kg) : {character?.mass}</Text>
+							<Text style={{ color: "#FFF" }}>Gender : {character?.gender}</Text>
+							<Text style={{ color: "#FFF" }}>Eye color : {character?.eye_color}</Text>
+						</View>
+						<View>
+							<Text style={{ color: "#FFF" }}>Hair color : {character?.hair_color}</Text>
+							<Text style={{ color: "#FFF" }}>Skin color : {character?.skin_color}</Text>
+							<Text style={{ color: "#FFF" }}>Birthday : {character?.birth_year}</Text>
+						</View>
+					</View>
+					<ScrollView>
+
+						<Text style={{color:"yellow"}}>Film</Text>
+						<ScrollView horizontal={true}>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+						</ScrollView>
+						<Text style={{color:"yellow"}}>Film</Text>
+						<ScrollView horizontal={true}>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+						</ScrollView>
+						<Text style={{color:"yellow"}}>Film</Text>
+						<ScrollView horizontal={true}>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+						</ScrollView>
+					</ScrollView>
+				</ScrollView>
+				
+
 
 			}
-		</View>
+										<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+							<View style={{width:200,height:200,margin:5,backgroundColor:"yellow"}}></View>
+		</ScrollView>
 
 	);
 }
